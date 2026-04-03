@@ -21,9 +21,11 @@ public class HomePage {
 	@FindBy(xpath = "//div[@class='small-box bg-info']//child::a[@href='https://groceryapp.uniqassosiates.com/admin/list-admin' ]")
 	WebElement adminslideMoreinfoicon;
 	//ManageNewsslide -More info Webelement
-	@FindBy(xpath = "//div[@class='small-box bg-info']//child::a[@href='https://groceryapp.uniqassosiates.com/admin/list-category' and @class='small-box-footer']")
+	@FindBy(xpath = "//div[@class='small-box bg-info']//child::a[@href='https://groceryapp.uniqassosiates.com/admin/list-news' and @class='small-box-footer']")
 	WebElement managenewsslideMoreinfoicon;
-	
+	//WebElement for text Sign in to start your session
+		@FindBy(xpath = "//p[text()='Sign in to start your session']")
+		WebElement signinText;
 	public void clickOnAdminProfileIcon() {
 		adminicon.click();
 	}
@@ -38,5 +40,8 @@ public class HomePage {
 	
 	public void clickOnMoreInfoIconOnManageNewsSlide() {
 		managenewsslideMoreinfoicon.click();
+	}
+	public boolean issigninTextDisplayed() {
+		return signinText.isDisplayed();
 	}
 }

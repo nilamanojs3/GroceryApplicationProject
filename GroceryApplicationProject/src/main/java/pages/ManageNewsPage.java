@@ -58,7 +58,7 @@ public class ManageNewsPage
 	}
 
 	// Search Button/page Functions-Manage News Page
-	public void searchButtonOnManageNewsPage() {
+	public void clickOnSearchButtonOnManageNewsPage() {
 		searchbuttonManageNewsPage.click();
 	}
 

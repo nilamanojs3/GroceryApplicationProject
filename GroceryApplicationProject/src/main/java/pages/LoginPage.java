@@ -21,6 +21,15 @@ public class LoginPage
 	WebElement passwordfield;
 	@FindBy(xpath = "//button[@class='btn btn-dark btn-block']")
 	WebElement signinbutton;
+//webelement for dashboard slide
+	@FindBy(xpath = "//p[text()='Dashboard']")
+	WebElement dashboard;
+	// Webelement for text 7rmart supermarket
+	@FindBy(xpath = "//b[text()='7rmart supermarket']")
+	WebElement pageText;
+	// WebElement for text Sign in to start your session
+	@FindBy(xpath = "//p[text()='Sign in to start your session']")
+	WebElement signinText;
 
 	public void enterUsernameOnUsernameField(String username) {
 		usernamefield.sendKeys(username);
@@ -32,6 +41,18 @@ public class LoginPage
 
 	public void clickSigninButton() {
 		signinbutton.click();
+	}
+
+	public boolean isDashboardDisplayed() {
+		return dashboard.isDisplayed();
+	}
+
+	public String getPageText() {
+		return pageText.getText();
+	}
+
+	public boolean issigninTextDisplayed() {
+		return signinText.isDisplayed();
 	}
 
 }

@@ -3,10 +3,13 @@ package utilities;
 import java.io.FileInputStream;
 import java.io.IOException;
 
+
 import org.apache.poi.xssf.usermodel.XSSFCell;
 import org.apache.poi.xssf.usermodel.XSSFRow;
 import org.apache.poi.xssf.usermodel.XSSFSheet;
 import org.apache.poi.xssf.usermodel.XSSFWorkbook;
+
+import constants.Constant;
 
 public class ExcelUtilities {
 	static FileInputStream f;
@@ -14,8 +17,9 @@ public class ExcelUtilities {
 	static XSSFSheet sh;
 
 	public static String readStringData(int row, int col, String sheet) throws IOException {
-		f = new FileInputStream(
-				"C:\\Users\\Nila\\git\\GroceryApplicationProject\\GroceryApplicationProject\\src\\test\\resources\\Testdata.xlsx");
+		//f = new FileInputStream(
+			//	"C:\\Users\\Nila\\git\\GroceryApplicationProject\\GroceryApplicationProject\\src\\test\\resources\\Testdata.xlsx");
+		f = new FileInputStream(Constant.testDataFile);
 		w = new XSSFWorkbook(f);
 		sh = w.getSheet(sheet);
 		XSSFRow r = sh.getRow(row);
@@ -25,8 +29,7 @@ public class ExcelUtilities {
 	}
 
 	public static String readIntegerData(int row, int col, String sheet) throws IOException {
-		f = new FileInputStream(
-				"C:\\Users\\Nila\\git\\GroceryApplicationProject\\GroceryApplicationProject\\src\\test\\resources\\Testdata.xlsx");
+		f = new FileInputStream(Constant.testDataFile);
 		w = new XSSFWorkbook(f);
 		sh = w.getSheet(sheet);
 		XSSFRow r = sh.getRow(row);
