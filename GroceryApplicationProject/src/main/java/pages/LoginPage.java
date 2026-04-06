@@ -50,6 +50,7 @@ public class LoginPage
 	}
 
 	public boolean isDashboardDisplayed() {
+		wait.waitUntilElementToBeVisible(driver, dashboard);
 		return dashboard.isDisplayed();
 	}
 
@@ -58,6 +59,7 @@ public class LoginPage
 	}
 
 	public boolean issigninTextDisplayed() {
+		wait.waitUntilTextIsLocated(driver, signinText);
 		return signinText.isDisplayed();
 	}
 

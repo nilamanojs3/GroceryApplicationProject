@@ -36,10 +36,11 @@ public class LoginTest extends TestNGBase {
 		String password = ExcelUtilities.readStringData(1, 1, "LoginPage");
 		LoginPage login = new LoginPage(driver);
 		login.enterUsernameOnUsernameField(username).enterPasswordOnPasswordField(password).clickSigninButton();
-		// asserFalse()
-		boolean dashboarddisplay = login.isDashboardDisplayed();
-		// Assert.assertFalse(dashboarddisplay,Constant. invalidCredentialError);
-		Assert.assertTrue(dashboarddisplay, Constant.invalidUsernameError);
+		
+		// assertEqual()
+		String actual = login.getPageText();
+		String expected = "7rmart supermarket";
+		Assert.assertEquals(actual, expected, Constant.invalidPasswordError);
 	}
 
 	@Test(priority = 3, description = "Validaing user credential with InvalidUsername and Validpassword")
@@ -52,7 +53,7 @@ public class LoginTest extends TestNGBase {
 		// assertEquals()
 		String actual = login.getPageText();
 		String expected = "7rmart supermarket";
-		Assert.assertEquals(actual, expected, Constant.invalidPasswordError);
+		Assert.assertEquals(actual, expected, Constant.invalidUsernameError);
 	}
 
 	@Test(priority = 4, description = "Validaing user credential with InvalidUsername and Invalidpassword ", groups = {

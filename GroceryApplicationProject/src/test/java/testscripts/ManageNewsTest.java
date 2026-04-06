@@ -2,9 +2,11 @@ package testscripts;
 
 import java.io.IOException;
 
+import org.testng.Assert;
 import org.testng.annotations.Test;
 
 import automationcore.TestNGBase;
+import constants.Constant;
 import pages.HomePage;
 import pages.LoginPage;
 import pages.ManageNewsPage;
@@ -23,7 +25,7 @@ public class ManageNewsTest extends TestNGBase {
 		login.enterUsernameOnUsernameField(username).enterPasswordOnPasswordField(password);
 		home = login.clickSigninButton();
 
-		// HomePage home = new HomePage(driver);
+		home = new HomePage(driver);
 		home.clickOnMoreInfoIconOnManageNewsSlide();
 
 		FakerUtility faker = new FakerUtility();
@@ -32,8 +34,12 @@ public class ManageNewsTest extends TestNGBase {
 		ManageNewsPage managenews = new ManageNewsPage(driver);
 		// NewButtonPage ManageNews page
 		managenews.clickNewButtonOnManageNewsPage().enterNewsTitleOnManageNewsInfoPage(newsinfo)
-				.clickSaveButtonOnManageNewsInfoPage().clickCancelButtonOnManageNewsInfoPage();
-
+				.clickSaveButtonOnManageNewsInfoPage();
+		/*managenews.clickNewButtonOnManageNewsPage().enterNewsTitleOnManageNewsInfoPage(newsinfo)
+		.clickCancelButtonOnManageNewsInfoPage();*/
+		
+		boolean textareaNewInfoPage = managenews.isNewsTextAreaDisplayed();
+		Assert.assertTrue(textareaNewInfoPage, Constant.newsEntryError);
 	}
 
 	@Test(priority = 2, description = "Verify the user is able to search news  in the manage News page")
@@ -44,7 +50,7 @@ public class ManageNewsTest extends TestNGBase {
 		LoginPage login = new LoginPage(driver);
 		login.enterUsernameOnUsernameField(username).enterPasswordOnPasswordField(password).clickSigninButton();
 
-		// HomePage home = new HomePage(driver);
+		 home = new HomePage(driver);
 		home.clickOnMoreInfoIconOnManageNewsSlide();
 
 		FakerUtility faker = new FakerUtility();
@@ -55,6 +61,8 @@ public class ManageNewsTest extends TestNGBase {
 		managenews.clickOnSearchButtonOnManageNewsPage().enterTitleOnSearchManageNewsPage(newsinfo)
 				.clickOnSearchButtonOnSearchManageNewsPage().clickOnResetButtonOnSearchManageNewsPage();
 
+		boolean managenewstxt = managenews.isManageNewsTextDisplayed();
+		Assert.assertTrue(managenewstxt, Constant.newsSearchError);
 	}
 
 	@Test(priority = 3, description = "Verify the reset button on the manage News page")
@@ -65,13 +73,15 @@ public class ManageNewsTest extends TestNGBase {
 		LoginPage login = new LoginPage(driver);
 		login.enterUsernameOnUsernameField(username).enterPasswordOnPasswordField(password).clickSigninButton();
 
-		// HomePage home = new HomePage(driver);
+	    home = new HomePage(driver);
 		home.clickOnMoreInfoIconOnManageNewsSlide();
 
 		ManageNewsPage managenews = new ManageNewsPage(driver);
 		// ResetButtonPage ManageNews page
 		managenews.clickOnSearchButtonOnManageNewsPage().clickOnResetButtonManageNewsPage();
 
+		boolean managenewstxt = managenews.isManageNewsTextDisplayed();
+		Assert.assertTrue(managenewstxt, Constant.newsResetError);
 	}
 
 }

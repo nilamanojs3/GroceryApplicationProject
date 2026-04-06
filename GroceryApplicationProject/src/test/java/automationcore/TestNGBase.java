@@ -53,19 +53,18 @@ public class TestNGBase
 
 	public void driverQuit(ITestResult iTestResult) throws IOException {
 
-		if (iTestResult.getStatus() == ITestResult.FAILURE) {
-
+		//ITestResult is a predefined interface -this will be managing the life cycle of your test method.eg your tc passed ,failed or skipped is determined by this interface
+		if (iTestResult.getStatus() == ITestResult.FAILURE) 
+		//if i am getting failure fromiTestResult.getstatus then create ScreenshotUtility class obj and call getScreenshot() of that class
+		{
 			ScreenshotUtility screenShot = new ScreenshotUtility();
 			screenShot.getScreenshot(driver, iTestResult.getName());
 		}
 		// driver.quit();
 
 	}
-	/*
-	 * public void closeAndQuit() { //driver.close(); //driver.quit();
-	 * 
-	 * 
-	 * }
-	 */
+	// public void closeAndQuit() { //driver.close(); //driver.quit();
+	 //}
+	 
 
 }

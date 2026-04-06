@@ -2,9 +2,11 @@ package testscripts;
 
 import java.io.IOException;
 
+import org.testng.Assert;
 import org.testng.annotations.Test;
 
 import automationcore.TestNGBase;
+import constants.Constant;
 import pages.AdminPage;
 import pages.HomePage;
 import pages.LoginPage;
@@ -24,7 +26,7 @@ public class AdminTest extends TestNGBase
 		LoginPage login = new LoginPage(driver);
 		login.enterUsernameOnUsernameField(username).enterPasswordOnPasswordField(password).clickSigninButton();
 
-		// HomePage home = new HomePage(driver);
+		home = new HomePage(driver);
 		home.clickOnMoreInfoIconOnAdminSlide();
 
 		FakerUtility faker = new FakerUtility();
@@ -35,14 +37,19 @@ public class AdminTest extends TestNGBase
 		AdminPage admin = new AdminPage(driver);
 
 		// NewButton/Page Admin page
-		admin.clickNewButtonOnAdminPage().enterUsernameOnUsernameFieldOnNewUserPage(newUserusername)
+	admin.clickNewButtonOnAdminPage().enterUsernameOnUsernameFieldOnNewUserPage(newUserusername)
 				.enterUsernameOnPasswordFieldOnNewUserPage(newUserpassword).selectUserTypeDropDownonNewUserPage()
 				.selectDropDownOptionStaffOnNewUserPage().clickOnSaveButtonOnNewUserPage()
-				.clickOnResetButtonOnNewUserPage();
+				.clickOnResetButtonOnNewUserPage(); 
+		/*admin.clickNewButtonOnAdminPage().enterUsernameOnUsernameFieldOnNewUserPage(newUserusername)
+		.enterUsernameOnPasswordFieldOnNewUserPage(newUserpassword).selectUserTypeDropDownonNewUserPage()
+		.selectDropDownOptionStaffOnNewUserPage().clickOnResetButtonOnNewUserPage();*/
 		// admin.selectDropDownOptionAdminOnNewUserPage();
 		// admin.selectDropDownOptionPartnerOnNewUserPage();
 		// admin.selectDropDownOptionDeliveryBoyOnNewUserPage();
 
+	boolean adminusr = admin.adminUserTextDisplayed();
+	Assert.assertTrue(adminusr, Constant.newUserEntryError);
 	}
 
 	@Test(priority = 2, description = "Verify the user is able to Search user in the admin page")
@@ -52,7 +59,7 @@ public class AdminTest extends TestNGBase
 		LoginPage login = new LoginPage(driver);
 		login.enterUsernameOnUsernameField(username).enterPasswordOnPasswordField(password).clickSigninButton();
 
-		// HomePage home = new HomePage(driver);
+		home = new HomePage(driver);
 		home.clickOnMoreInfoIconOnAdminSlide();
 
 		String searchUserUsername = ExcelUtilities.readStringData(6, 0, "AdminPage");
@@ -60,10 +67,13 @@ public class AdminTest extends TestNGBase
 
 		// SearchButton/Page Admin page
 		admin.searchButtonOnAdminPage().enterUsernameOnUsernameFieldOnSearchAdminUserPage(searchUserUsername)
-				.selectDropDownOptionStaffOnSearchAdminUserPage().clickOnSearchButtonOnSearchAdminUserPage()
-				.clickOnResetButtonOnSearchAdminUserPage();
+				.selectDropDownOptionStaffOnSearchAdminUserPage().clickOnSearchButtonOnSearchAdminUserPage();
+		/*admin.searchButtonOnAdminPage().enterUsernameOnUsernameFieldOnSearchAdminUserPage(searchUserUsername)
+		.selectDropDownOptionStaffOnSearchAdminUserPage().clickOnResetButtonOnSearchAdminUserPage();*/
 		// admin.selectDropDownOptionAdminOnSearchAdminUserPage();
 
+		boolean adminusr = admin.adminUserTextDisplayed();
+		Assert.assertTrue(adminusr, Constant.searchEntryError);
 	}
 
 	@Test(priority = 3, description = "Verify the user is able to Reset the Admin page")
@@ -72,11 +82,15 @@ public class AdminTest extends TestNGBase
 		String password = ExcelUtilities.readStringData(0, 1, "LoginPage");
 		LoginPage login = new LoginPage(driver);
 		login.enterUsernameOnUsernameField(username).enterPasswordOnPasswordField(password).clickSigninButton();
-		// HomePage home = new HomePage(driver);
+		home = new HomePage(driver);
 		home.clickOnMoreInfoIconOnAdminSlide();
 		AdminPage admin = new AdminPage(driver);
 		// ResetButton-AdminPage
 		admin.clickNewButtonOnAdminPage().clickOnResetButtonAdminPage();
+		
+		boolean adminusr = admin.adminUserTextDisplayed();
+		Assert.assertTrue(adminusr, Constant.resetError);
+		
 	}
 
 }

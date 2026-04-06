@@ -1,15 +1,21 @@
 package pages;
 
+
+
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.support.PageFactory;
 
+import utilities.PageUtility;
+import utilities.WaitUtility;
+
 
 public class ManageNewsPage
 {
 	public WebDriver driver;
-
+	WaitUtility wait=new WaitUtility();//Wait utility object
+	PageUtility page=new PageUtility();
 	public ManageNewsPage(WebDriver driver) {
 		this.driver = driver;
 		PageFactory.initElements(driver, this);
@@ -39,9 +45,13 @@ public class ManageNewsPage
 	// Resetbutton ManageNews PageWebElements
 	@FindBy(xpath = "//div[@class='col-sm-12']//child::a[@class='btn btn-rounded btn-warning' and @href='https://groceryapp.uniqassosiates.com/admin/list-news']  ")
 	WebElement resetbuttonManageNewsPage;
+	
+	//webelement for manage newstext
+	@FindBy(xpath = "//h4[text()='Manage News']")WebElement managenewstxt;
 
 	// Manage News Page -News button Functions
 	public ManageNewsPage clickNewButtonOnManageNewsPage() {
+		wait.waitUntilElementToBeClickable(driver, newbuttonManageNewsPage);
 		newbuttonManageNewsPage.click();
 		return this;
 	}
@@ -52,11 +62,13 @@ public class ManageNewsPage
 	}
 
 	public ManageNewsPage clickSaveButtonOnManageNewsInfoPage() {
+		wait.waitUntilElementToBeClickable(driver, savebuttonNewInfoPage);
 		savebuttonNewInfoPage.click();
 		return this;
 	}
 
 	public ManageNewsPage clickCancelButtonOnManageNewsInfoPage() {
+		wait.waitUntilElementToBeClickable(driver, cancelbuttonNewInfoPage);
 		cancelbuttonNewInfoPage.click();
 		return this;
 		
@@ -64,6 +76,7 @@ public class ManageNewsPage
 
 	// Search Button/page Functions-Manage News Page
 	public ManageNewsPage clickOnSearchButtonOnManageNewsPage() {
+		wait.waitUntilElementToBeClickable(driver, searchbuttonManageNewsPage);
 		searchbuttonManageNewsPage.click();
 		return this;
 	}
@@ -74,19 +87,33 @@ public class ManageNewsPage
 	}
 
 	public ManageNewsPage clickOnSearchButtonOnSearchManageNewsPage() {
+		wait.waitUntilElementToBeClickable(driver, searchbuttonSearchManageNewsPage);
 		searchbuttonSearchManageNewsPage.click();
 		return this;
 	}
 
 	public ManageNewsPage clickOnResetButtonOnSearchManageNewsPage() {
+		wait.waitUntilElementToBeClickable(driver, resetButtonSearchManageNewsPage);
 		resetButtonSearchManageNewsPage.click();
 		return this;
 	}
 
 	// Reset button -ManageNewsPage function
 	public ManageNewsPage clickOnResetButtonManageNewsPage() {
+		wait.waitUntilElementToBeClickable(driver, resetbuttonManageNewsPage);
 		resetbuttonManageNewsPage.click();
 		return this;
 	}
+	
+	public boolean isManageNewsTextDisplayed() {
+		wait.waitUntilTextIsLocated(driver, managenewstxt);
+		return managenewstxt.isDisplayed();
 
+	}
+	
+	public boolean isNewsTextAreaDisplayed() {
+		wait.waitUntilElementToBeVisible(driver, textareaNewInfoPage);
+		return textareaNewInfoPage.isDisplayed();
+
+	}
 }

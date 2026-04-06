@@ -27,7 +27,7 @@ public class HomeTest extends TestNGBase {
 		login.enterUsernameOnUsernameField(username).enterPasswordOnPasswordField(password);
 		home = login.clickSigninButton();
 
-		// HomePage home = new HomePage(driver);
+		home = new HomePage(driver);
 		home.clickOnMoreInfoIconOnAdminSlide();
 		home.clickOnAdminProfileIcon();
 		login = home.clickOnLogoutButton();
