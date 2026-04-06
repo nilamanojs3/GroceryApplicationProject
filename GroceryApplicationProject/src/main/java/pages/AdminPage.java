@@ -6,11 +6,13 @@ import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.support.PageFactory;
 import org.openqa.selenium.support.ui.Select;
 
+import utilities.PageUtility;
+
 public class AdminPage
 
 {
 	public WebDriver driver;
-
+	PageUtility page=new PageUtility();
 	public AdminPage(WebDriver driver) {
 		this.driver = driver;
 		PageFactory.initElements(driver, this);
@@ -46,84 +48,103 @@ public class AdminPage
 	WebElement resetbutton;
 
 	// NewUserFunctions-AdminPage
-	public void clickNewButtonOnAdminPage() {
+	public AdminPage clickNewButtonOnAdminPage() {
 		newbutton.click();
+		return this;
 	}
 
-	public void enterUsernameOnUsernameFieldOnNewUserPage(String newUserusername) {
+	public AdminPage enterUsernameOnUsernameFieldOnNewUserPage(String newUserusername) {
 		newUserUsernamefield.sendKeys(newUserusername);
+		return this;
 	}
 
-	public void enterUsernameOnPasswordFieldOnNewUserPage(String newUserpassword) {
+	public AdminPage enterUsernameOnPasswordFieldOnNewUserPage(String newUserpassword) {
 		newUserPasswordfield.sendKeys(newUserpassword);
+		return this;
 	}
 
-	public void selectUserTypeDropDownonNewUserPage() {
+	public AdminPage selectUserTypeDropDownonNewUserPage() {
 		newUserUserTypefield.click();
+		return this;
 	}
 
-	public void selectDropDownOptionStaffOnNewUserPage() {
-		Select select = new Select(newUserUserTypefield);
-		// select.deselectByVisibleText("Staff");
-		select.selectByIndex(1);
+	public AdminPage selectDropDownOptionStaffOnNewUserPage() {
+		
+		page.selectDropdownWithIndex(newUserUserTypefield, 1);//pageutility functions used
+		//Select select = new Select(newUserUserTypefield);
+		//select.selectByIndex(1);
+		return this;
 	}
 
-	public void selectDropDownOptionAdminOnNewUserPage() {
+	public AdminPage selectDropDownOptionAdminOnNewUserPage() {
 		Select select = new Select(newUserUserTypefield);
 		select.selectByIndex(2);
+		return this;
 	}
 
-	public void selectDropDownOptionPartnerOnNewUserPage() {
+	public AdminPage selectDropDownOptionPartnerOnNewUserPage() {
 		Select select = new Select(newUserUserTypefield);
 		select.selectByIndex(3);
+		return this;
 	}
 
-	public void selectDropDownOptionDeliveryBoyOnNewUserPage() {
+	public AdminPage selectDropDownOptionDeliveryBoyOnNewUserPage() {
 		Select select = new Select(newUserUserTypefield);
 		select.selectByIndex(4);
+		return this;
 	}
 
-	public void clickOnSaveButtonOnNewUserPage() {
+	public AdminPage clickOnSaveButtonOnNewUserPage() {
 		newUserSavebutton.click();
+		return this;
 	}
 
-	public void clickOnResetButtonOnNewUserPage() {
+	public AdminPage clickOnResetButtonOnNewUserPage() {
 		newUserResetbutton.click();
+		return this;
 	}
 
 	// Search Button/page Functions-AdminPage
-	public void searchButtonOnAdminPage() {
+	public AdminPage searchButtonOnAdminPage() {
 		searchbutton.click();
+		return this;
 	}
 
-	public void enterUsernameOnUsernameFieldOnSearchAdminUserPage(String searchUserUsername) {
+	public AdminPage enterUsernameOnUsernameFieldOnSearchAdminUserPage(String searchUserUsername) {
 		searchAdminUserUsernamefield.sendKeys(searchUserUsername);
+		return this;
 	}
 
-	public void selectUserTypeDropDownonSearchAdminUserPage() {
+	public AdminPage selectUserTypeDropDownonSearchAdminUserPage() {
 		searchAdminUserUserTypefield.click();
+		return this;
 	}
 
-	public void selectDropDownOptionStaffOnSearchAdminUserPage() {
+	public AdminPage selectDropDownOptionStaffOnSearchAdminUserPage() {
 		Select select = new Select(searchAdminUserUserTypefield);
 		select.selectByIndex(1);
+		return this;
 	}
 
-	public void selectDropDownOptionAdminOnSearchAdminUserPage() {
+	public AdminPage selectDropDownOptionAdminOnSearchAdminUserPage() {
 		Select select = new Select(searchAdminUserUserTypefield);
 		select.selectByIndex(2);
+		return this;
 	}
 
-	public void clickOnSearchButtonOnSearchAdminUserPage() {
+	public AdminPage clickOnSearchButtonOnSearchAdminUserPage() {
 		searchAdminUserSearchButton.click();
+		return this;
 	}
 
-	public void clickOnResetButtonOnSearchAdminUserPage() {
+	public AdminPage clickOnResetButtonOnSearchAdminUserPage() {
 		searchAdminUserResetButton.click();
+		return this;
 	}
 
 	// Reset button -Admin Page function
-	public void clickOnResetButtonAdminPage() {
+	public AdminPage clickOnResetButtonAdminPage() {
 		resetbutton.click();
+		return this;
 	}
 }

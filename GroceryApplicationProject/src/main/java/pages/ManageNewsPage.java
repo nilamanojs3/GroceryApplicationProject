@@ -41,42 +41,52 @@ public class ManageNewsPage
 	WebElement resetbuttonManageNewsPage;
 
 	// Manage News Page -News button Functions
-	public void clickNewButtonOnManageNewsPage() {
+	public ManageNewsPage clickNewButtonOnManageNewsPage() {
 		newbuttonManageNewsPage.click();
+		return this;
 	}
 
-	public void enterNewsTitleOnManageNewsInfoPage(String newsinfo) {
+	public ManageNewsPage enterNewsTitleOnManageNewsInfoPage(String newsinfo) {
 		textareaNewInfoPage.sendKeys(newsinfo);
+		return this;
 	}
 
-	public void clickSaveButtonOnManageNewsInfoPage() {
+	public ManageNewsPage clickSaveButtonOnManageNewsInfoPage() {
 		savebuttonNewInfoPage.click();
+		return this;
 	}
 
-	public void clickCancelButtonOnManageNewsInfoPage() {
+	public ManageNewsPage clickCancelButtonOnManageNewsInfoPage() {
 		cancelbuttonNewInfoPage.click();
+		return this;
+		
 	}
 
 	// Search Button/page Functions-Manage News Page
-	public void clickOnSearchButtonOnManageNewsPage() {
+	public ManageNewsPage clickOnSearchButtonOnManageNewsPage() {
 		searchbuttonManageNewsPage.click();
+		return this;
 	}
 
-	public void enterTitleOnSearchManageNewsPage(String searchUserUsername) {
+	public ManageNewsPage enterTitleOnSearchManageNewsPage(String searchUserUsername) {
 		titleSearchManageNewsPage.sendKeys(searchUserUsername);
+		return this;
 	}
 
-	public void clickOnSearchButtonOnSearchManageNewsPage() {
+	public ManageNewsPage clickOnSearchButtonOnSearchManageNewsPage() {
 		searchbuttonSearchManageNewsPage.click();
+		return this;
 	}
 
-	public void clickOnResetButtonOnSearchManageNewsPage() {
+	public ManageNewsPage clickOnResetButtonOnSearchManageNewsPage() {
 		resetButtonSearchManageNewsPage.click();
+		return this;
 	}
 
 	// Reset button -ManageNewsPage function
-	public void clickOnResetButtonManageNewsPage() {
+	public ManageNewsPage clickOnResetButtonManageNewsPage() {
 		resetbuttonManageNewsPage.click();
+		return this;
 	}
 
 }

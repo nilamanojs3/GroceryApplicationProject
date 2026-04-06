@@ -12,20 +12,26 @@ import pages.LoginPage;
 import utilities.ExcelUtilities;
 
 public class HomeTest extends TestNGBase {
-	@Test(description = "Verify the user is able to logout from the application",retryAnalyzer = retrymachanism.Retry.class)//Applying retry machanism in this tc
+	HomePage home;
+
+	@Test(description = "Verify the user is able to logout from the application", retryAnalyzer = retrymachanism.Retry.class) // Applying
+																																// retry
+																																// machanism
+																																// in
+																																// this
+																																// tc
 	public void verifyLogoutButton() throws IOException {
 		String username = ExcelUtilities.readStringData(0, 0, "LoginPage");
 		String password = ExcelUtilities.readStringData(0, 1, "LoginPage");
 		LoginPage login = new LoginPage(driver);
-		login.enterUsernameOnUsernameField(username);
-		login.enterPasswordOnPasswordField(password);
-		login.clickSigninButton();
+		login.enterUsernameOnUsernameField(username).enterPasswordOnPasswordField(password);
+		home = login.clickSigninButton();
 
-		HomePage logout = new HomePage(driver);
-		logout.clickOnMoreInfoIconOnAdminSlide();
-		logout.clickOnAdminProfileIcon();
-		logout.clickOnLogoutButton();
-		boolean signinTextDisplayed=login.issigninTextDisplayed();
+		// HomePage home = new HomePage(driver);
+		home.clickOnMoreInfoIconOnAdminSlide();
+		home.clickOnAdminProfileIcon();
+		login = home.clickOnLogoutButton();
+		boolean signinTextDisplayed = login.issigninTextDisplayed();
 		Assert.assertTrue(signinTextDisplayed, Constant.unsuccessfulLogoutError);
 	}
 

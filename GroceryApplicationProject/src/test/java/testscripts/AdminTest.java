@@ -14,36 +14,34 @@ import utilities.FakerUtility;
 public class AdminTest extends TestNGBase
 
 {
+	HomePage home;
+
 	@Test(priority = 1, description = "Verify the user is able to add new users in the admin page")
 	public void VerifyWhetherUserIsAbletoAddNewUser() throws IOException {
-		
+
 		String username = ExcelUtilities.readStringData(0, 0, "LoginPage");
 		String password = ExcelUtilities.readStringData(0, 1, "LoginPage");
 		LoginPage login = new LoginPage(driver);
-		login.enterUsernameOnUsernameField(username);
-		login.enterPasswordOnPasswordField(password);
-		login.clickSigninButton();
+		login.enterUsernameOnUsernameField(username).enterPasswordOnPasswordField(password).clickSigninButton();
 
-		HomePage logout = new HomePage(driver);
-		logout.clickOnMoreInfoIconOnAdminSlide();
+		// HomePage home = new HomePage(driver);
+		home.clickOnMoreInfoIconOnAdminSlide();
 
-		FakerUtility faker=new FakerUtility();
+		FakerUtility faker = new FakerUtility();
 		String newUserusername = faker.createRandomUsername();
-		String newUserpassword =faker.createRandomPassword();
-		//String newUserusername = ExcelUtilities.readStringData(0, 0, "AdminPage");
-		//String newUserpassword = ExcelUtilities.readStringData(0, 1, "AdminPage");
+		String newUserpassword = faker.createRandomPassword();
+		// String newUserusername = ExcelUtilities.readStringData(0, 0, "AdminPage");
+		// String newUserpassword = ExcelUtilities.readStringData(0, 1, "AdminPage");
 		AdminPage admin = new AdminPage(driver);
+
 		// NewButton/Page Admin page
-		admin.clickNewButtonOnAdminPage();
-		admin.enterUsernameOnUsernameFieldOnNewUserPage(newUserusername);
-		admin.enterUsernameOnPasswordFieldOnNewUserPage(newUserpassword);
-		admin.selectUserTypeDropDownonNewUserPage();
-		admin.selectDropDownOptionStaffOnNewUserPage();
+		admin.clickNewButtonOnAdminPage().enterUsernameOnUsernameFieldOnNewUserPage(newUserusername)
+				.enterUsernameOnPasswordFieldOnNewUserPage(newUserpassword).selectUserTypeDropDownonNewUserPage()
+				.selectDropDownOptionStaffOnNewUserPage().clickOnSaveButtonOnNewUserPage()
+				.clickOnResetButtonOnNewUserPage();
 		// admin.selectDropDownOptionAdminOnNewUserPage();
 		// admin.selectDropDownOptionPartnerOnNewUserPage();
 		// admin.selectDropDownOptionDeliveryBoyOnNewUserPage();
-		admin.clickOnSaveButtonOnNewUserPage();
-		admin.clickOnResetButtonOnNewUserPage();
 
 	}
 
@@ -52,23 +50,19 @@ public class AdminTest extends TestNGBase
 		String username = ExcelUtilities.readStringData(0, 0, "LoginPage");
 		String password = ExcelUtilities.readStringData(0, 1, "LoginPage");
 		LoginPage login = new LoginPage(driver);
-		login.enterUsernameOnUsernameField(username);
-		login.enterPasswordOnPasswordField(password);
-		login.clickSigninButton();
+		login.enterUsernameOnUsernameField(username).enterPasswordOnPasswordField(password).clickSigninButton();
 
-		HomePage logout = new HomePage(driver);
-		logout.clickOnMoreInfoIconOnAdminSlide();
+		// HomePage home = new HomePage(driver);
+		home.clickOnMoreInfoIconOnAdminSlide();
 
 		String searchUserUsername = ExcelUtilities.readStringData(6, 0, "AdminPage");
 		AdminPage admin = new AdminPage(driver);
 
 		// SearchButton/Page Admin page
-		admin.searchButtonOnAdminPage();
-		admin.enterUsernameOnUsernameFieldOnSearchAdminUserPage(searchUserUsername);
-		admin.selectDropDownOptionStaffOnSearchAdminUserPage();
+		admin.searchButtonOnAdminPage().enterUsernameOnUsernameFieldOnSearchAdminUserPage(searchUserUsername)
+				.selectDropDownOptionStaffOnSearchAdminUserPage().clickOnSearchButtonOnSearchAdminUserPage()
+				.clickOnResetButtonOnSearchAdminUserPage();
 		// admin.selectDropDownOptionAdminOnSearchAdminUserPage();
-		admin.clickOnSearchButtonOnSearchAdminUserPage();
-		admin.clickOnResetButtonOnSearchAdminUserPage();
 
 	}
 
@@ -77,15 +71,12 @@ public class AdminTest extends TestNGBase
 		String username = ExcelUtilities.readStringData(0, 0, "LoginPage");
 		String password = ExcelUtilities.readStringData(0, 1, "LoginPage");
 		LoginPage login = new LoginPage(driver);
-		login.enterUsernameOnUsernameField(username);
-		login.enterPasswordOnPasswordField(password);
-		login.clickSigninButton();
-		HomePage logout = new HomePage(driver);
-		logout.clickOnMoreInfoIconOnAdminSlide();
+		login.enterUsernameOnUsernameField(username).enterPasswordOnPasswordField(password).clickSigninButton();
+		// HomePage home = new HomePage(driver);
+		home.clickOnMoreInfoIconOnAdminSlide();
 		AdminPage admin = new AdminPage(driver);
 		// ResetButton-AdminPage
-		admin.clickNewButtonOnAdminPage();
-		admin.clickOnResetButtonAdminPage();
+		admin.clickNewButtonOnAdminPage().clickOnResetButtonAdminPage();
 	}
 
 }

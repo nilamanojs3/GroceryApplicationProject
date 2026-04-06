@@ -5,11 +5,13 @@ import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.support.PageFactory;
 
+import utilities.WaitUtility;
+
 public class LoginPage
 
 {
 	public WebDriver driver;
-
+	WaitUtility wait=new WaitUtility();//Wait utility object
 	public LoginPage(WebDriver driver) {
 		this.driver = driver;
 		PageFactory.initElements(driver, this);
@@ -31,16 +33,20 @@ public class LoginPage
 	@FindBy(xpath = "//p[text()='Sign in to start your session']")
 	WebElement signinText;
 
-	public void enterUsernameOnUsernameField(String username) {
+	public LoginPage enterUsernameOnUsernameField(String username) {
 		usernamefield.sendKeys(username);
+		return this;
 	}
 
-	public void enterPasswordOnPasswordField(String password) {
+	public LoginPage enterPasswordOnPasswordField(String password) {
 		passwordfield.sendKeys(password);
+		return this;
 	}
 
-	public void clickSigninButton() {
+	public HomePage clickSigninButton() {
+		wait.waitUntilElementToBeClickable(driver, signinbutton);//applying wait before click action
 		signinbutton.click();
+		return new HomePage(driver);
 	}
 
 	public boolean isDashboardDisplayed() {
