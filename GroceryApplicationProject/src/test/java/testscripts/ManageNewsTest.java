@@ -16,7 +16,7 @@ import utilities.FakerUtility;
 public class ManageNewsTest extends TestNGBase {
 	HomePage home;
 
-	@Test(priority = 1, description = "Verify the user is able to enter News info in the manage News page")
+	@Test(priority = 1, description = "Verify the user is able to enter News info in the manage News page",retryAnalyzer = retrymachanism.Retry.class)
 	public void VerifyWhetherUserIsAbletoAddNewsOnManagerNewsPage() throws IOException {
 
 		String username = ExcelUtilities.readStringData(0, 0, "LoginPage");
@@ -42,7 +42,7 @@ public class ManageNewsTest extends TestNGBase {
 		Assert.assertTrue(textareaNewInfoPage, Constant.newsEntryError);
 	}
 
-	@Test(priority = 2, description = "Verify the user is able to search news  in the manage News page")
+	@Test(priority = 2, description = "Verify the user is able to search news  in the manage News page",retryAnalyzer = retrymachanism.Retry.class)
 	public void VerifyWhetherUserIsAbletoSearchNewsOnManagerNewsPage() throws IOException {
 
 		String username = ExcelUtilities.readStringData(0, 0, "LoginPage");
@@ -65,7 +65,7 @@ public class ManageNewsTest extends TestNGBase {
 		Assert.assertTrue(managenewstxt, Constant.newsSearchError);
 	}
 
-	@Test(priority = 3, description = "Verify the reset button on the manage News page")
+	@Test(priority = 3, description = "Verify the reset button on the manage News page",retryAnalyzer = retrymachanism.Retry.class)
 	public void VerifytheResetButtonOnManagerNewsPage() throws IOException {
 
 		String username = ExcelUtilities.readStringData(0, 0, "LoginPage");

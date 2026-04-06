@@ -18,7 +18,7 @@ public class AdminTest extends TestNGBase
 {
 	HomePage home;
 
-	@Test(priority = 1, description = "Verify the user is able to add new users in the admin page")
+	@Test(priority = 1, description = "Verify the user is able to add new users in the admin page",retryAnalyzer = retrymachanism.Retry.class)
 	public void VerifyWhetherUserIsAbletoAddNewUser() throws IOException {
 
 		String username = ExcelUtilities.readStringData(0, 0, "LoginPage");
@@ -52,7 +52,7 @@ public class AdminTest extends TestNGBase
 	Assert.assertTrue(adminusr, Constant.newUserEntryError);
 	}
 
-	@Test(priority = 2, description = "Verify the user is able to Search user in the admin page")
+	@Test(priority = 2, description = "Verify the user is able to Search user in the admin page",retryAnalyzer = retrymachanism.Retry.class)
 	public void VerifyWhetherUserIsAbletoSearchUser() throws IOException {
 		String username = ExcelUtilities.readStringData(0, 0, "LoginPage");
 		String password = ExcelUtilities.readStringData(0, 1, "LoginPage");
@@ -76,7 +76,7 @@ public class AdminTest extends TestNGBase
 		Assert.assertTrue(adminusr, Constant.searchEntryError);
 	}
 
-	@Test(priority = 3, description = "Verify the user is able to Reset the Admin page")
+	@Test(priority = 3, description = "Verify the user is able to Reset the Admin page",retryAnalyzer = retrymachanism.Retry.class)
 	public void VerifyWhetherUserIsAbletoResetAdminPage() throws IOException {
 		String username = ExcelUtilities.readStringData(0, 0, "LoginPage");
 		String password = ExcelUtilities.readStringData(0, 1, "LoginPage");
