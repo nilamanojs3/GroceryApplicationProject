@@ -2,6 +2,7 @@ package constants;
 
 public class Constant {
 
+	//directory path
 	public static final String testDataFile = System.getProperty("user.dir") + "\\src\\test\\resources\\Testdata.xlsx";
 	public static final String configFile = System.getProperty("user.dir")
 			+ "\\src\\main\\resources\\config.properties";//to get path of application URL saved in config.properties file
